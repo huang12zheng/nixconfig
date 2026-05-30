@@ -1,10 +1,8 @@
-# Sensitive files
+# Sensitive files in secrets directory only
 secrets/*.age
 secrets/*.key
-*.age
-*.key
 
-# Nix
+# Nix build results
 result
 result-*
 .direnv/
@@ -22,4 +20,3 @@ tmp/
 
 # macOS
 .DS_Store
-config.nix

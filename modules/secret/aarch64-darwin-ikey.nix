@@ -1,13 +1,12 @@
-{
-  inputs,
-  cfg,
-  pkgs,
-  agenix,
-  username,
-  hostname,
-  projectRoot,
-  ...
-}: 
+{ inputs
+, cfg
+, pkgs
+, agenix
+, username
+, hostname
+, projectRoot
+, ...
+}:
 {
   imports = [
     agenix.darwinModules.default
@@ -25,7 +24,7 @@
   # Define secrets - will be decrypted to /run/agenix/
   age.secrets = {
     "github_token" = {
-      file =  "${projectRoot}/secrets/github_token.age";
+      file = "${projectRoot}/secrets/github_token.age";
       mode = "0600";
       owner = username;
     };
@@ -49,7 +48,7 @@
   };
 
   # Set zsh environment variables for terminal (import from launchd)
-  home-manager.users.${username}.programs = {  
+  home-manager.users.${username}.programs = {
     zsh.initContent = ''
       [[ -n $GITHUB_TOKEN ]] || export GITHUB_TOKEN=$(launchctl getenv GITHUB_TOKEN)
       [[ -n $CACHIX_AUTH_TOKEN ]] || export CACHIX_AUTH_TOKEN=$(launchctl getenv CACHIX_AUTH_TOKEN)

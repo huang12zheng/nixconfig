@@ -1,8 +1,8 @@
-{inputs,pkgs, lib, cfg, username, defaults ,...}: 
+{ inputs, pkgs, lib, cfg, username, defaults, ... }:
 {
   imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
-  
-  environment.shells = [pkgs.zsh];
+
+  environment.shells = [ pkgs.zsh ];
 
   environment.systemPackages = with pkgs; [
     wget
@@ -12,16 +12,16 @@
     cachix
   ];
   # Homebrew mirror environment variables
-  environment.variables = cfg.homebrew.mirrors or {}; # 改为正确的 cfg.homebrew.mirrors
+  environment.variables = cfg.homebrew.mirrors or { }; # 改为正确的 cfg.homebrew.mirrors
   # 删除错误的 environment.etc 配置
 
   # Align homebrew taps with nix-homebrew
   homebrew = {
     enable = lib.mkDefault true;
-    taps = []; # 从 cfg.nix-homebrew.taps 改为空列表，因为 config.nix 中没有这个配置
-    brews = cfg.brews or [];
-    casks = cfg.casks or [];
-    masApps = cfg.masApps or {};
+    taps = [ ]; # 从 cfg.nix-homebrew.taps 改为空列表，因为 config.nix 中没有这个配置
+    brews = cfg.brews or [ ];
+    casks = cfg.casks or [ ];
+    masApps = cfg.masApps or { };
   };
 
   nix-homebrew = {
@@ -55,5 +55,5 @@
     ];
   };
 
-  
+
 }
