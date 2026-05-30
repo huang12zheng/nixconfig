@@ -3,7 +3,7 @@
   imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
   
   environment.shells = [pkgs.zsh];
-  
+
   environment.systemPackages = with pkgs; [
     wget
     tree

@@ -49,8 +49,21 @@
   };
 
   # Set zsh environment variables for terminal (import from launchd)
-  home-manager.users.${username}.programs.zsh.initContent = ''
-    [[ -n $GITHUB_TOKEN ]] || export GITHUB_TOKEN=$(launchctl getenv GITHUB_TOKEN)
-    [[ -n $CACHIX_AUTH_TOKEN ]] || export CACHIX_AUTH_TOKEN=$(launchctl getenv CACHIX_AUTH_TOKEN)
-  '';
+  home-manager.users.${username}.programs = {  
+    zsh.initContent = ''
+      [[ -n $GITHUB_TOKEN ]] || export GITHUB_TOKEN=$(launchctl getenv GITHUB_TOKEN)
+      [[ -n $CACHIX_AUTH_TOKEN ]] || export CACHIX_AUTH_TOKEN=$(launchctl getenv CACHIX_AUTH_TOKEN)
+    '';
+    ssh = {
+      enable = true;
+      enableDefaultConfig = false;
+      matchBlocks = {
+        "github.com" = {
+          hostname = "github.com";
+          identityFile = "~/.ssh/id_ed25519";
+          identitiesOnly = true;
+        };
+      };
+    };
+  };
 }

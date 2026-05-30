@@ -62,9 +62,9 @@
     isMinimalConfig = true;
     proxyPort = 7890;
   };
-  isCli = (builtins.getEnv "DISPLAY") == "";
-  isGui = (builtins.getEnv "DISPLAY") != "";
-  isNixOnDroid = (builtins.getEnv "USER") == "nix-on-droid";
-  isWSL2 = (builtins.getEnv "WSL_DISTRO_NAME") != "";
-  isDarwin = (builtins.currentSystem) == "aarch64-darwin";
+  # isCli = (builtins.getEnv "DISPLAY") == "";
+  # isGui = (builtins.getEnv "DISPLAY") != "";
+  # isNixOnDroid = (builtins.getEnv "USER") == "nix-on-droid";
+  # isWSL2 = (builtins.getEnv "WSL_DISTRO_NAME") != "";
+  # isDarwin = (builtins.currentSystem) == "aarch64-darwin";
 }
