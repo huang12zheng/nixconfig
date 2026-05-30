@@ -32,7 +32,7 @@ in
 {
   darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
     specialArgs = {
-      inherit inputs pkgs cfg username hostname projectRoot lib agenix;
+      inherit inputs pkgs cfg username hostname projectRoot lib agenix home-manager;
       defaults = cfg.defaults;
       darwinState = cfg.nix.darwinVersion;
     };

@@ -5,6 +5,7 @@
 , username
 , hostname
 , projectRoot
+, home-manager
 , ...
 }:
 {
