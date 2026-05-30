@@ -1,0 +1,24 @@
+# Sensitive files
+secrets/*.age
+secrets/*.key
+*.age
+*.key
+
+# Nix
+result
+result-*
+.direnv/
+.envrc
+
+# Backup files
+*~
+*.swp
+*.bak
+
+# Temporary files
+*.tmp
+temp/
+tmp/
+
+# macOS
+.DS_Store

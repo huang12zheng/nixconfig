@@ -11,7 +11,7 @@ in
 
 let
   system = cfg.hostPlatform;
-  inherit (cfg) defaults hostPlatform;
+  inherit (cfg) hostPlatform;
   inherit (cfg.defaults) hostname;
 
   pkgs = import nixpkgs {
@@ -25,6 +25,7 @@ in
   darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
     specialArgs = {
       inherit inputs pkgs cfg username hostname projectRoot lib agenix;
+      inherit (cfg) defaults;
       inherit (cfg.nix) darwinVersion;
     };
     modules = [
@@ -37,7 +38,7 @@ in
         home-manager.users.${username} = {
           home.stateVersion = version;
         };
-        
+        nix.enable = false;
         nixpkgs.hostPlatform = hostPlatform; 
         system.stateVersion = 6;
         users.users.${username} = {

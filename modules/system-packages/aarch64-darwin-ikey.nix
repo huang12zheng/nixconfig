@@ -12,8 +12,8 @@
     cachix
   ];
   # Homebrew mirror environment variables
-  environment.variables = cfg.mirrors or {};
-  environment.etc."nix/inputs/nixpkgs".source = "${pkgs}";
+  environment.variables = cfg.homebrew.mirrors or {}; # 改为正确的 cfg.homebrew.mirrors
+  # 删除错误的 environment.etc 配置
 
   # Align homebrew taps with nix-homebrew
   homebrew = {

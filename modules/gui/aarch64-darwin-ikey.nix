@@ -7,8 +7,9 @@
     #     openssh.authorizedKeys.keys = defaults.sshAuthorizedKeys;
     # };
 
-    nix.registry.nixpkgs.flake = pkgs;
-    nix.nixPath = lib.mkForce ["/etc/nix/inputs"];
+    #nix-darwin 2025.12未实现该功能registry
+    # nix.registry.nixpkgs.flake = pkgs; # 注释掉有问题的配置
+    nix.nixPath = ["nixpkgs=https://mirrors.ustc.edu.cn/nix-channels/nixos-${version}"]; # 注释掉有问题的配置
     
     security.pam.services.sudo_local.touchIdAuth = true;
     time.timeZone = "Asia/Shanghai";
