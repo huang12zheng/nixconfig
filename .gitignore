@@ -22,3 +22,4 @@ tmp/
 
 # macOS
 .DS_Store
+config.nix
