@@ -5,11 +5,12 @@
   environment.shells = [ pkgs.zsh ];
 
   environment.systemPackages = with pkgs; [
-    wget
-    tree
     age
-    inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.devenv
     cachix
+    cocoapods
+    inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.devenv
+    tree
+    wget
   ];
   # Homebrew mirror environment variables
   environment.variables = cfg.homebrew.mirrors or { }; # 改为正确的 cfg.homebrew.mirrors

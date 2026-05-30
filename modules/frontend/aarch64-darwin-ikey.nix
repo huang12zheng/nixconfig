@@ -27,9 +27,14 @@ in {
       flutter
       openssl
       gcc-unwrapped
+      # 添加一些 Android 相关工具
+      androidenv.androidPkgs.platform-tools
+      sdkmanager
     ];
-
-    home.sessionVariables = {
+    
+    home.sessionVariables = let
+      sdkPath = "/Users/${username}/Library/Android/sdk"; in 
+    {
       JAVA_HOME = pinnedJDK;
       CHROME_EXECUTABLE = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
       LIBCLANG_PATH = "${clang_path}/lib";
@@ -38,6 +43,10 @@ in {
       OPENSSL_NO_VENDOR = 1;
       OPENSSL_INCLUDE_DIR = "${pkgs.openssl.dev}/include";
       PKG_CONFIG_PATH = "${pkgs.pkg-config.out}";
+      # 建议：使用传统方式配置 Android SDK
+      # 你可以通过 Android Studio 安装，或者手动下载
+      ANDROID_SDK_ROOT = sdkPath;
+      ANDROID_HOME = sdkPath;
     } // lib.optionalAttrs useChinaMirror {
       # Flutter SDK 下载镜像
       FLUTTER_STORAGE_BASE_URL = "https://storage.flutter-io.cn";
@@ -48,6 +57,8 @@ in {
     home.sessionPath = lib.mkAfter [
       "$HOME/Gist/alias_command"
       "$HOME/.local/bin"
+      # "$HOME/Library/Android/sdk/platform-tools"
+      # "$HOME/Library/Android/sdk/cmdline-tools/latest/bin"
     ];
 
     # CocoaPods 镜像自动切换 - 使用 home.file 而不是 activation

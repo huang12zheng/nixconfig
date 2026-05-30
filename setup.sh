@@ -13,3 +13,6 @@ sudo nix run nix-darwin -- switch --flake .#darwin-ikey
 # nix-update
 # nix run nixpkgs#age --  -R ~/.ssh/id_ed25519.pub -o ./gh_token.age ./gh_token # -R is for openssh public key
 #INSTALL clash-verge-rev #wget https://github.com/Dreamacro/clash-verge/releases/download/v2.12.1/Clash.Verge-2.12.1-macos-arm64.dmg
+mkdir -p ~/Library/Android/sdk
+# sdkmanager "platform-tools" "platforms;android-37.0" "build-tools;37.0.0" "cmdline-tools;latest"
+# 

@@ -58,6 +58,9 @@ in
       initContent = ''
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
         ${envExtra}
+        if ! gem sources -l | grep -q "gems.ruby-china.com"; then
+          gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+        fi
       '';
       oh-my-zsh = {
         enable = true;
