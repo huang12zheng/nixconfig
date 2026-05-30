@@ -1,8 +1,11 @@
-{pkgs, inputs,cfg, username, ...}: 
-let defaults = cfg.defaults;
+{username, ...}: 
 {
   programs.zsh = {
     enable = true;
+    enableCompletion = true;
+  };
+  home-manager.users.${username}.programs.zsh = {
+    # enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;

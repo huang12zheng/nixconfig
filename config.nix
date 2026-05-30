@@ -11,6 +11,9 @@
       ssh.extraConfig = "";
     };
   };
+  system = "aarch64";
+  hostPlatform = "aarch64-darwin";
+  channel = "aarch64-darwin-ikey";
 
   projectRoot = ./.;
 
@@ -34,7 +37,7 @@
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
     version = "25.11";
-    stateVersion = "6";
+    darwinVersion = "6";
   };
 
   homebrew = {
