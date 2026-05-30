@@ -18,7 +18,7 @@
   # Align homebrew taps with nix-homebrew
   homebrew = {
     enable = lib.mkDefault true;
-    taps = builtins.attrNames cfg.nix-homebrew.taps;
+    taps = []; # 从 cfg.nix-homebrew.taps 改为空列表，因为 config.nix 中没有这个配置
     brews = cfg.brews or [];
     casks = cfg.casks or [];
     masApps = cfg.masApps or {};
@@ -30,8 +30,8 @@
     user = username;
     # Declarative tap management
     taps = {
-      "homebrew/homebrew-core" = cfg.homebrew-core;
-      "homebrew/homebrew-cask" = cfg.homebrew-cask;
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
     };
     # With mutableTaps disabled, taps can only be changed via nix config
     mutableTaps = false;

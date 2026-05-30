@@ -25,8 +25,7 @@
     nixpkgs-unstable.url = "https://mirrors.ustc.edu.cn/nix-channels/nixos-unstable/nixexprs.tar.xz";
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    
+
     nix-darwin = {
       url = "github:lnl7/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";

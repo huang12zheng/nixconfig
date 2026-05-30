@@ -25,7 +25,6 @@ in
     };
     programs.bash = {
         enable = true;
-        bashrcExtra = lib.mkAfter envExtra;
     };
     programs.git = {
             enable = true;
@@ -55,8 +54,8 @@ in
       syntaxHighlighting.enable = true;
       initContent = ''
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+        ${envExtra}
       '';
-      envExtra = lib.mkAfter envExtra;
       oh-my-zsh = {
         enable = true;
         plugins = [

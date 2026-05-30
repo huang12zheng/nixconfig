@@ -1,6 +1,6 @@
 {
   cfg, version, username, projectRoot, 
-  nixpkgs,nixpkgs-darwin,nix-darwin,home-manager,agenix,nix-homebrew,
+  nixpkgs, nixpkgs-darwin, nix-darwin, home-manager, agenix, nix-homebrew,
   ...
 }@inputs:
 
@@ -11,9 +11,8 @@ in
 
 let
   system = cfg.hostPlatform;
-  inherit (cfg) hostPlatform defaults;
-  inherit (cfg.defaults) hostname fullname email;
-  inherit (cfg.nix) darwinVersion;
+  inherit (cfg) defaults hostPlatform;
+  inherit (cfg.defaults) hostname;
 
   pkgs = import nixpkgs {
     inherit system;
@@ -25,7 +24,8 @@ in
 {
   darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
     specialArgs = {
-      inherit inputs pkgs cfg username projectRoot hostname lib agenix;
+      inherit inputs pkgs cfg username hostname projectRoot lib agenix;
+      inherit (cfg.nix) darwinVersion;
     };
     modules = [
       # 导入 home-manager 模块
