@@ -1,4 +1,4 @@
-{username, lib, ...}: 
+{username, lib, hostname,defaults, ...}: 
 let envExtra = ''
         export PATH="$PATH:/opt/homebrew/bin:/usr/local/bin"
     '';

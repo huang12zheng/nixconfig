@@ -1,8 +1,10 @@
 {
+  inputs,
   cfg,
   pkgs,
   agenix,
-  username
+  username,
+  hostname,
   projectRoot,
   ...
 }: 

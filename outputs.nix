@@ -11,9 +11,9 @@ in
 
 let
   system = cfg.hostPlatform;
-  inherit (cfg) hostPlatform;
+  inherit (cfg) hostPlatform defaults;
   inherit (cfg.defaults) hostname fullname email;
-  inherit (cfg.nix) version darwinVersion;
+  inherit (cfg.nix) darwinVersion;
 
   pkgs = import nixpkgs {
     inherit system;
@@ -24,20 +24,19 @@ let
 in
 {
   darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
-    # 这行很重要?
     specialArgs = {
-      inherit inputs pkgs cfg username  projectRoot;
+      inherit inputs pkgs cfg username projectRoot hostname lib agenix;
     };
-    # 这个有问题?
-    # specialArgs = {inherit inputs;};
     modules = [
       # 导入 home-manager 模块
       home-manager.darwinModules.home-manager
       
       { 
-        home-manager.users.${username}.home.stateVersion = version;
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
+        home-manager.users.${username} = {
+          home.stateVersion = version;
+        };
         
         nixpkgs.hostPlatform = hostPlatform; 
         system.stateVersion = 6;
