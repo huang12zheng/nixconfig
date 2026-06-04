@@ -42,7 +42,7 @@ in {
         index = "${CONFIG_REGISTRY}"
         # 为什么加上就可以编译了?
         [target.aarch64-apple-darwin]
-        rustflags = [ "-C", "link-arg=-undefined", "-C", "link-arg=dynamic_lookup", ]
+        rustflags = [ "-C", "link-arg=-undefined", "-C", "link-arg=dynamic_lookup", "-L","/opt/homebrew/opt/libiconv/lib"]
       '';
     };
   };

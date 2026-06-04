@@ -11,7 +11,6 @@
       ssh.extraConfig = "";
     };
   };
-  system = "aarch64";
   hostPlatform = "aarch64-darwin";
   channel = "aarch64-darwin-ikey";
 
