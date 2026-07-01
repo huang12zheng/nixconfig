@@ -17,6 +17,7 @@ in
         l = "ls";
         ll = "ls -al";
         b = "bat";
+        c = "qoder";
         nix-gc = "sudo nix-collect-garbage -d";
         frb = "cd rust && cargo build --release && cd .. && flutter run --debug";
         nix-update = "sudo nix run nix-darwin -- switch --flake .#${hostname}";
